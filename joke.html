@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            display: block;
+            background-color: yellowgreen;
+            width: 80px;
+            height: 40px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: auto;
+        }
+        div {
+            width: 500px;
+            height: 600px;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点我看笑话">
+    <div class="box"></div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        // 注册事件
+        $('[type="button"]').click(function(){
+            // // 创建xhr对象
+            // let xhr =new XMLHttpRequest();
+            // // 设置请求方法跟地址
+            // xhr.open('get','https://autumnfish.cn/api/joke')
+            // // 发送请求
+            // xhr.send()
+            // // 注册响应事件
+            // xhr.onload =function(){
+            //     $('.box').text(xhr.responseText)
+            // }
+            $.ajax({
+                url:'https://autumnfish.cn/api/joke',
+                type:'get',
+                // dataType:'json',
+                data:'',
+                success: function(backData){
+               console.log(backData);
+               $('.box').text(backData)
+                }
+            });
+        })
+    </script>
+</body>
+</html>
